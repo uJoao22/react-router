@@ -1,6 +1,6 @@
 import React from 'react'
 import './assets/css/base/base.css'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Home from './paginas/Home'
 import Sobre from './paginas/Sobre'
@@ -11,13 +11,19 @@ function App() {
     // Envolvendo cada componente que tenho em um componente Route e definido o path que será usado para a visualização
     <Router>
 
-      <Route path="/">
-        <Home/>
-      </Route>
+      {/* Usando para evitar o comportamento padrão do react-router que mesmo quando achar a rota que preciso, continuar procurando e correr risco de encontrar uma outra rota com o mesmo nome e exibir ambas */}
+      <Switch>
 
-      <Route path="/sobre">
-        <Sobre/>
-      </Route>
+        {/* Adicionando Propriedade extract para não exibir as duas rotas juntas, pois qualquer rota que tiver "/" o componente Home seria exibido */}
+        <Route exact path="/">
+          <Home/>
+        </Route>
+
+        <Route path="/sobre">
+          <Sobre/>
+        </Route>
+
+      </Switch>
 
     </Router>
   )
