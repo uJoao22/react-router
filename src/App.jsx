@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Home from './paginas/Home'
 import Sobre from './paginas/Sobre'
+import Pagina404 from './paginas/Pagina404'
 
 function App() {
   return (
@@ -21,6 +22,11 @@ function App() {
 
         <Route path="/sobre">
           <Sobre/>
+        </Route>
+
+        {/* Criando rota padrão, para caso de buscar rotas inexistentes */}
+        <Route>
+          <Pagina404/>
         </Route>
 
       </Switch>
