@@ -1,6 +1,7 @@
 import React from "react"
 import imagem from "../assets/img/doguito.svg"
 import '../assets/css/componentes/cabecalho.css'
+import { Link } from "react-router-dom"
 
 const Cabecalho = () => {
   return (
@@ -19,10 +20,11 @@ const Cabecalho = () => {
 
       <nav className="menu-cabecalho">
         <ul className="menu-itens">
-          <li><a href="#" className="menu-item menu-item--entrar">Entrar</a></li>
-          <li><a href="#" className="menu-item">Produtos</a></li>
-          <li><a href="/" className="menu-item">Blog</a></li>
-          <li><a href="/sobre" className="menu-item">Sobre</a></li>
+          {/* Usando o componente Link do react-router para navegar na SPA, sem realizar recarregamentos */}
+          <li><Link to="#" className="menu-item menu-item--entrar">Entrar</Link></li>
+          <li><Link to="#" className="menu-item">Produtos</Link></li>
+          <li><Link to="/" className="menu-item">Blog</Link></li>
+          <li><Link to="/sobre" className="menu-item">Sobre</Link></li>
         </ul>
       </nav>
 
