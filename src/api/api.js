@@ -6,7 +6,8 @@ export const api = axios.create({
 })
 
 // Função para realizar uma busca no servidor e devolver a resposta
-export const busca = async () => {
+// Recebe a url que será feita a requisição e o useState para setar o valor de uma várivel
+export const busca = async (url, setDado) => {
   const resposta = await api.get(url)
   setDado(resposta.data)
 }
