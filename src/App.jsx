@@ -6,6 +6,7 @@ import Home from './paginas/Home'
 import Sobre from './paginas/Sobre'
 import Pagina404 from './paginas/Pagina404'
 import Cabecalho from './components/Cabecalho'
+import Post from './paginas/Post'
 
 function App() {
   return (
@@ -25,6 +26,11 @@ function App() {
 
         <Route path="/sobre">
           <Sobre/>
+        </Route>
+
+        {/* Mandando o id como parametro para a rota usando os 2 pontos ":" */}
+        <Route path="/posts/:id">
+          <Post/>
         </Route>
 
         {/* Criando rota padrão, para caso de buscar rotas inexistentes */}
