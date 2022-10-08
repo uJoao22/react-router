@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import ListaCategorias from "../components/ListaCategorias";
 import '../assets/css/blog.css';
-import { Route, useParams, useRouteMatch } from "react-router-dom";
+import { Link, Route, Switch, useParams, useRouteMatch } from "react-router-dom";
 import ListaPost from "../components/ListaPost";
 import { busca } from "../api/api";
+import SubCategoria from "./SubCategoria";
 
 const Categoria = () => {
 
   const { id } = useParams()
 
   // Retornando o path da rota atual
-  const { path } = useRouteMatch()
+  const { url, path } = useRouteMatch()
 
   const [ subcategorias, setSubCategorias ] = useState([])
 
@@ -31,10 +32,28 @@ const Categoria = () => {
 
     <ListaCategorias/>
 
-    {/* Criando uma rota aninhada */}
-    <Route exact path={`${path}/`}>
-      <ListaPost url={`/posts?categoria=${id}`}/>
-    </Route>
+    <ul className="lista-categorias container flex">
+      {
+        subcategorias.map((subcategoria) => (
+          <li className={`lista-categorias__categoria lista-categorias__categoria--${id}`}  key={subcategoria}>
+            <Link to={`${url}/${subcategoria}`}>
+              {subcategoria}
+            </Link>
+          </li>
+        ))
+      }
+    </ul>
+
+    {/* Criando rotas aninhadas */}
+    <Switch>
+      <Route exact path={`${path}/`}>
+        <ListaPost url={`/posts?categoria=${id}`}/>
+      </Route>
+
+      <Route path={`${path}/:subcategoria`}>
+        <SubCategoria/>
+      </Route>
+    </Switch>
     </>
   )
 }
