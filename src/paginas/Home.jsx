@@ -12,7 +12,6 @@ const Home = () => {
 
       <ListaCategorias/>
       <ListaPost url={'/posts'}/>
-
     </main>
   )
 }
